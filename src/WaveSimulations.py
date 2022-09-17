@@ -98,7 +98,7 @@ class Bolge:
         anim = animation.FuncAnimation(fig, animate, init_func=init, frames=200, interval=20, blit=True)
 
         if self.refleksjonskoeffisient>0 or self.brytningsindeks != 1:
-            plt.axvline(x = 1, color = 'k', label = 'axvline - full height')
+            plt.axvline(x = 0, color = 'k', label = 'axvline - full height')
         plt.show()
         
         return anim
