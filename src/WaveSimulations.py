@@ -19,15 +19,14 @@ class Bolge:
     kx = 0
     n_punkt = 200
 
-    def __init__(self, amplitude, bolgelengde, x_max, t_max, bolgefart=0):
-        self.x=np.arange(x_max, step=x_max/self.n_punkt)
-        self.timesteps=np.arange(t_max, step=t_max/self.n_punkt)
+    def __init__(self, amplitude, bolgelengde, bolgefart=0):
         self.amplitude = amplitude
         self.bolgelengde = bolgelengde
         self.frekvens = bolgefart/bolgelengde
         self.bolgefart = bolgefart
         self.kx = 2*np.pi/bolgelengde
-
+        self.x = np.linspace(-1,1, self.n_punkt)
+        
         return
 
     def plot_1d_bolge(self):
@@ -49,13 +48,13 @@ class Bolge:
         plt.rcParams["figure.autolayout"] = True
         
         fig = plt.figure()
-        ax = plt.axes(xlim=(0, 2), ylim=(-2, 2))
+        ax = plt.axes(xlim=(-1, 1), ylim=(-2, 2))
         line, = ax.plot([], [], lw=2)
         
         n1 = int(self.n_punkt/2)
         n2 = self.n_punkt
         
-        x = np.linspace(0, 2, self.n_punkt)
+        x = np.linspace(-1, 1, self.n_punkt)
         x1 = x[0:n1]
         x2 = x[n1:n2]
         
@@ -180,7 +179,7 @@ class Bolge:
 
 
 if __name__ == "__main__":
-    bolge = Bolge(amplitude=1, bolgelengde=0.25, x_max=2, t_max=1000, bolgefart = 0.01)
+    bolge = Bolge(amplitude=1, bolgelengde=0.25, bolgefart = 0.01)
     
     
     bolge.brytningsindeks = 1.33
